@@ -1,0 +1,182 @@
+%shared-heading {
+  display: inline-block;
+  font-family: $font-secondary;
+  text-transform: capitalize;
+  line-height: 1.2;
+  padding-bottom: 2rem;
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+  }
+  &::before {
+    width: 100%;
+    background-color: $color-dark-2;
+  }
+
+  &::after {
+    width: 7rem;
+    background-color: $color-primary;
+  }
+}
+
+%shared-btn {
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  text-transform: capitalize;
+  color: $color-light;
+  border: 1px solid currentColor;
+  overflow: hidden;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    border: 1px solid $color-primary;
+  }
+}
+
+.container {
+  position: relative;
+  max-width: $site-width;
+  margin: 0 auto;
+  padding: 0 3rem;
+
+  @include responsive(medium) {
+    max-width: 96rem;
+    padding: 0 3.75rem;
+  }
+
+  @include responsive(small) {
+    max-width: 70rem;
+  }
+}
+
+.nav__link {
+  display: block;
+  text-transform: uppercase;
+  color: $color-light;
+  @include transition(all, 0.2s);
+
+  &:hover,
+  &.active {
+    color: $color-primary !important;
+  }
+}
+
+.text {
+  &__red {
+    color: $color-primary;
+  }
+  &__center {
+    text-align: center;
+  }
+}
+
+.line-center {
+  &::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.half-width {
+  @include flex-center(space-between);
+
+  .form__input {
+    flex-basis: 48.5%;
+  }
+
+  @include responsive(small) {
+    flex-direction: column;
+
+    .form__input {
+      flex-basis: 100%;
+
+      &:first-child {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
+
+.heading {
+  &__secondary {
+    @extend %shared-heading;
+    font-size: 3.6rem;
+  }
+}
+
+.paragraph {
+  font-weight: set-weight(medium);
+  hyphens: auto;
+  color: $color-dark-3;
+
+  &:not(:last-of-type) {
+    margin-bottom: 2rem;
+  }
+}
+
+.btn {
+  &__primary {
+    @extend %shared-btn;
+    font-size: 1.6rem;
+    font-weight: set-weight(light);
+    line-height: 1.6;
+    background-color: $color-dark;
+    position: relative;
+    z-index: 2;
+    padding: 0.8rem 2rem;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0.3rem;
+      height: 100%;
+      background-color: $color-primary;
+      transform: scaleY(0);
+      transition: transform 0.3s, width 0.2s ease-in 0.3s;
+      z-index: -1;
+    }
+
+    &:hover::before {
+      transform: scaleY(1);
+      width: 100%;
+    }
+
+    @include responsive(medium) {
+      font-size: 1.75rem;
+    }
+  }
+
+  &__secondary {
+    @extend %shared-btn;
+    font-size: 2rem;
+    width: 4rem;
+    height: 4rem;
+    line-height: 4rem;
+    @include transition(all, 0.3s);
+
+    &:hover {
+      background-color: $color-primary;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;500;600;700&display=swap');
+
+$font-primary: 'Open Sans', sans-serif;
+$font-secondary: 'Josefin Sans', sans-serif;
+$color-primary: #e65365;
+$color-dark: #141414;
+$color-dark-2: #333;
+$color-dark-3: #a3a3a3;
+$color-light: #fff;
+$site-width: 120rem;
+$home-bg: url('../img/home-bg.jpg');
+$resume-bg: url('../img/resume-bg.jpg');
+
+$font-weight: (
+  'exlight': 200,
+  'light': 300,
+  'regular': 400,
+  'medium': 500,
+  'semibold': 600,
+  'bold': 700,
+);
+
+$gradient-bg: linear-gradient(
+  to bottom,
+  rgba($color-dark, 0.6),
+  rgba($color-dark, 0.6)
+);
+
+@function set-weight($weight) {
+  @return map-get($font-weight, $weight);
+}
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint == max-small {
+    @media only screen and (max-width: 34.9375em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == small {
+    @media only screen and (max-width: 47.9375em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == medium {
+    @media only screen and (max-width: 61.9375em) {
+      @content;
+    }
+  }
+}
+
+@mixin page-bg($bg-image) {
+  @if ($bg-image == home) {
+    background: $gradient-bg, $home-bg no-repeat fixed center center/cover;
+  }
+  @if ($bg-image == resume) {
+    background: $gradient-bg, $resume-bg no-repeat fixed center center/cover;
+  }
+}
+
+@mixin flex-center($justification) {
+  display: flex;
+  align-items: center;
+  justify-content: $justification;
+}
+
+@mixin transition($property, $duration) {
+  transition: $property;
+  transition-duration: $duration;
+  transition-timing-function: ease;
+}
+
+@for $space from 1 through 12 {
+  @if $space == 1 {
+    .p-#{$space} {
+      padding: #{$space + 0.5}rem;
+    }
+    .py-#{$space} {
+      padding: #{$space + 0.5}rem 0;
+    }
+    .pyb-#{$space} {
+      padding-bottom: #{$space + 0.5}rem;
+    }
+    .m-#{$space} {
+      margin: #{$space + 0.5}rem;
+    }
+    .my-#{$space} {
+      margin: #{$space + 0.5}rem 0;
+    }
+    .myb-#{$space} {
+      margin-bottom: #{$space + 0.5}rem;
+    }
+  } @else {
+    .p-#{$space} {
+      padding: #{$space}rem;
+    }
+    .py-#{$space} {
+      padding: #{$space}rem 0;
+    }
+    .pyb-#{$space} {
+      padding-bottom: #{$space}rem;
+    }
+    .m-#{$space} {
+      margin: #{$space}rem;
+    }
+    .my-#{$space} {
+      margin: #{$space}rem 0;
+    }
+    .myb-#{$space} {
+      margin-bottom: #{$space}rem;
+    }
+  }
+}
