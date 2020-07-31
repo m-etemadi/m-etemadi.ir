@@ -6,4 +6,3 @@ Technologies I Used:
 - CSS3
 - SASS
 - JQUERY and AJAX
-- PHP
