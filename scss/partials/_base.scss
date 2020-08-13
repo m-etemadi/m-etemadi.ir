@@ -267,10 +267,11 @@ body {
   }
 
   &__content {
-    flex: 0 0 1;
+    flex: 0 0 65%;
     padding-left: 5rem;
 
     @include responsive(medium) {
+      flex: 0 0 100%;
       padding-left: 0;
     }
   }
